@@ -1,8 +1,14 @@
 <template>
   <section id="setting">
-    <div>
-      <label for="toggle" class="theme-toggler settings-option" id="theme-toggler">Light / Dark</label>
-      <input v-on:click="initDarkMode()" type="checkbox" id="toggle" v-model="darkModeValue"/>
+    <div class="darkmode-form">
+      <label>Light / Dark</label>
+      <div class="darkmode-toggle" v-on:click="initDarkMode()">
+        <div class="icons">
+          <i class="fa-solid fa-sun"></i>
+          <i class="fa-solid fa-moon"></i>
+        </div>
+        <span :class="darkModeValue ? 'switcher switcher-activated' : 'switcher'"></span>
+      </div>
     </div>
   </section>
 </template>
@@ -42,12 +48,16 @@ export default defineComponent({
     },
 
     initDarkMode() {
-      this.saveDarkMode(!this.darkModeValue);
+      this.darkModeValue = !this.darkModeValue;
+      this.saveDarkMode(this.darkModeValue);
       let mainLayout = document.querySelector("#app");
-      console.log(mainLayout);
-      if(!this.darkModeValue) {
+      let toggleSwitcher = document.querySelector(".darkmode-toggle .switcher");
+      
+      if(this.darkModeValue) {
+        toggleSwitcher?.classList.add("switcher-activated");
         mainLayout?.classList.add("dark-theme");
       } else {
+        toggleSwitcher?.classList.remove("switcher-activated");
         mainLayout?.classList.remove("dark-theme")
       }
     }
@@ -64,70 +74,49 @@ export default defineComponent({
 
 <style lang="scss">
 
+#setting {
+  .darkmode-form {
+    display: flex;
+    gap: 10px;
+    
+    .darkmode-toggle {
+      width: 50px;
+      border: 1px solid black;
+      border-radius: 25px;
+      // padding: 4px;
+      background: lightgray;
+      
+      .icons {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px;
+        opacity: 50%;
+      }
+
+      .switcher {
+        position: absolute;
+        background: white;
+        width: 20px;
+        border-radius: 25px;
+        height: 19px;
+        top: 2px;
+        left: 3px;
+
+      }
+      .switcher-activated {
+        left: unset;
+        right: 3px;
+      }
+    }
+  }
+}
+
+
 #app {
   &.dark-theme {
     background: black;
   }
 }
 
-// .theme-toggler__checkbox {
-//   opacity: 0;
-//   position: absolute;
-//   right: 30px;
-//   top: 25%;
-//   z-index: 1; }
-
-// .theme-toggler__label {
-//   font-weight: normal;
-//   font-size: 1.2em;
-//   display: inline-block;
-//   vertical-align: middle;
-//   flex: 1;
-//   margin-right: 2em; 
-//   color:#35394b;
-// }
-
-// .theme-toggler__switch {
-//   width: 50px;
-//   height: 25px;
-//   border-radius: 1em;
-//   position: relative;
-//   cursor: pointer;
-//   background: #eee;
-//   border: 2px solid #ddd;
-//   transition: all .1s linear;
-//   display: inline-block;
-//   vertical-align: middle; 
-  
-// }
-
-// .theme-toggler__switch::after {
-//   content: "";
-//   position: absolute;
-//   width: 21px;
-//   height: 21px;
-//   margin-top: 0px;
-//   margin-left: 1px;
-//   border-radius: 1em;
-//   background: #fff;
-//   border: 1px solid #eee;
-//   box-shadow: 2px 5px 10px -2px rgba(0, 0, 0, 0.2);
-//   transition: all .1s linear; }
-
-// .theme-toggler__checkbox:focus + .theme-toggler__switch {
-//   box-shadow: 0 0 0 5px #fff, 0 0 0 7px orange;
-//   outline: 3px solid transparent; }
-
-// .theme-toggler__checkbox:focus:not(:focus-visible) + .theme-toggler__switch {
-//   box-shadow: none; }
-
-// .theme-toggler__checkbox:checked + .theme-toggler__switch {
-//   background: #76D672;
-//   border-color: #76D672; }
-
-// .theme-toggler__checkbox:checked + .theme-toggler__switch::after {
-//   transform: translatex(22px);
-//   transition: transform .1s linear;
-//   border-color: #fff; }
 
 </style>

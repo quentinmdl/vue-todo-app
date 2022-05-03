@@ -7,8 +7,8 @@ import router from "./router";
 // Font awesome
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
 // import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
-library.add(faPenToSquare, faTrash);
+import { faPenToSquare, faTrash, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
+library.add(faPenToSquare, faTrash, faMoon, faSun);
 dom.watch();
 
 const app = createApp(App);
