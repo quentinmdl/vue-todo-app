@@ -1,27 +1,37 @@
 <script lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
-import Header from "@/components/base/Header.vue";
-import Footer from "@/components/base/Footer.vue";
+import HeaderComponent from "@/components/base/Header.vue";
+import FooterComponent from "@/components/base/Footer.vue";
+import MessageComponent from "@/components/message/Message.vue";
 
-import { defineComponent  } from "vue";
+import { defineComponent } from "vue";
+
+import { settingStore } from "@/stores/setting";
+import { storeToRefs } from "pinia";
 
 export default defineComponent({
   name: "App",
   components: {
-    Header,
-    Footer,
-    HelloWorld
-  }
-})
+    HeaderComponent,
+    FooterComponent,
+    MessageComponent,
+  },
+
+  data() {
+    return {
+      showMessage: false,
+      darkModeValue: false
+    };
+  },
+});
 </script>
 
 <template>
-  <Header />
+  <HeaderComponent />
   <main id="page-content" class="container mx-auto py-8">
+    <MessageComponent v-if="showMessage" />
     <RouterView />
   </main>
-  <Footer />
+  <FooterComponent />
 </template>
 
 <style lang="scss">
@@ -31,4 +41,5 @@ export default defineComponent({
 #app {
   min-height: 100vh;
 }
+
 </style>

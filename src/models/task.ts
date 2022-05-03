@@ -1,9 +1,11 @@
 export interface ITask {
-    id: number,
-    name: number,
-    state: State
+  id: number;
+  content: string;
+  date: string;
+  categoryId: number,
+  state: string;
 }
 
-export interface State {
-    State: ['todo', 'in progress', 'done']
+export interface IState {
+  state: ["todo", "in progress", "done"];
 }

@@ -1,17 +1,17 @@
 <template>
-  <footer class="absolute py-4 w-full">
-      <div class="text-center">
-          <p>QTN - VUE / 2022</p>
-      </div>
+  <footer class="py-4 w-full">
+    <div class="text-center">
+      <p>QTN - VUE / 2022</p>
+    </div>
   </footer>
 </template>
 
-<script  lang="ts">
-import { defineComponent  } from "vue";
+<script lang="ts">
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Footer",
-})
+  name: "FooterComponent",
+});
 </script>
 
 <style lang="scss">

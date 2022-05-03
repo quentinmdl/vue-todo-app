@@ -9,9 +9,12 @@ module.exports = {
     "@vue/eslint-config-typescript/recommended",
     "@vue/eslint-config-prettier",
     "plugin:vue/base",
-    "@vue/typescript/recommended"
+    "@vue/typescript/recommended",
   ],
   env: {
     "vue/setup-compiler-macros": true,
+    browser: true,
+    amd: true,
+    node: true,
   },
 };

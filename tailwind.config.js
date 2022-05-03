@@ -1,11 +1,9 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+// const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  content: [
-    './src/**/*.vue',
-  ],
+  content: ["./src/**/*.vue"],
   theme: {
     extend: {},
   },
-  plugins: [require("tailwindcss"), require("autoprefixer")()]
-}
+  plugins: [require("tailwindcss"), require("autoprefixer")()],
+};
